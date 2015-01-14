@@ -1,77 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register JSS Students</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style>
+      .form-control,.form-control:focus,.btn{
+        border-radius:0;
+        box-shadow:none;
+      }
+      label{
+        font-weight:300;
+      }
+      .mainContainer{
+        background-color: #fff;
+        margin:auto;
+        margin-top:6%;
+        padding:20px 20px 15px;
+        max-width:450px;
+        width:100%;
+        border-radius:2px;
+      }
+      .input-group-addon{
+        border-radius:0;
+      }
+      .mainContainer h1{
+        font-size:2em;
+        margin-top:0;
+      }
+      .btn{
+        background:#34495E;
+        border:0;
+        display:block;
+        width:100%;
+        max-width:200px;
+        margin:auto;
+      }
+      body{
+        background:#333;
+      }
+    </style>
   </head>
   <body>
-  <br><br><br><br>
-  <h3><center>Registration Form</center></h3>
- <br><br>  
-      <form class="form-horizontal" method="post" action="">
-      {% csrf_token %}
-        <fieldset>
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="username">Username</label>  
-          <div class="col-md-4">
-          <input id="username" name="username" type="text" placeholder="College Registration No." class="form-control input-md" required="">
-          <span class="help-block">for example: 12cse020</span>  
+    <section class="container-fluid">
+      <div class="mainContainer">
+        <h1 class="text-center">Register</h1>
+        <form role="form" method="post" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="input-group">
+              <input id="email" name="email" type="text" class="form-control" placeholder="Inital name of email" required>
+              <span class="input-group-addon">@jssaten.ac.in</span>
+            </div>
           </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="email">Your Email Id</label>  
-          <div class="col-md-4">
-          <input id="email" name="email" type="text" placeholder="email-id" class="form-control input-md" required="">
-            
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label class="control-label" for="fname">First Name</label>
+                <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name" required>
+              </div>
+              <div class="col-sm-6">
+              <label class="control-label" for="lname">Last Name</label>
+                <input id="lname" name="lname" type="text" class="form-control" placeholder="Last Name" required>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <!-- Password input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="password">Password</label>
-          <div class="col-md-4">
-            <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
-            
+          <div class="form-group">
+            <label class="control-label">Department</label>
+            <select class="form-control">
+              <option>Select department...</option>
+              <option>Computer Science and Engineering</option>
+              <option>Information Technology</option>
+              <option>Electronics and Communication</option>
+              <option>Electrical Engineering</option>
+              <option>Mechanical Engineering</option>
+              <option>Civil Engineering</option>
+              <option>Instrumentaion and Control</option>
+            </select>
           </div>
-        </div>
-
-        <!-- Password input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="repeatpassword">Repeat Password</label>
-          <div class="col-md-4">
-            <input id="repeatpassword" name="repeatpassword" type="password" placeholder="Password Again" class="form-control input-md" required="">
-            
+          <div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" class="form-control" required>
           </div>
-        </div>
-
-        <!-- Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="submitBtn"></label>
-          <div class="col-md-4">
-            <center><button id="submitBtn" name="submitBtn" class="btn btn-primary">Login</button></center>
+          <div class="form-group">
+            <label class="control-label" for="repeatpassword">Retype Password</label>
+            <input id="repeatpassword" name="repeatpassword" type="password" placeholder="Retype password" class="form-control" required>
           </div>
-        </div>
-
-        </fieldset>
-        </form>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+          <div class="form-group">
+            <input type="submit" id="submitBtn" name="submitBtn" class="btn btn-primary" value="Register">
+          </div>
+        </form> 
+      </div>
+    </section>
   </body>
-</html>
+  </html>
