@@ -110,6 +110,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'deshrajdry@gmail.com'
-# EMAIL_HOST_PASSWORD = 'LOL'
+EMAIL_HOST_PASSWORD = 'LOL'
 # EMAIL_HOST_PASSWORD = 'youAretryingToBeClever'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
