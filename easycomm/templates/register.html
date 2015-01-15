@@ -50,6 +50,10 @@
         <form role="form" method="post" action="">
           {% csrf_token %}
           <div class="form-group">
+           <div class="form-group">
+            <label class="control-label" for="username">Username</label>
+            <input id="username" name="username" type="text" placeholder="As Employee Code" class="form-control" required>
+          </div>
             <label class="control-label" for="email">Email</label>
             <div class="input-group">
               <input id="email" name="email" type="text" class="form-control" placeholder="Inital name of email" required>
@@ -70,15 +74,15 @@
           </div>
           <div class="form-group">
             <label class="control-label">Department</label>
-            <select class="form-control">
+            <select class="form-control" name="deptt">
               <option>Select department...</option>
-              <option>Computer Science and Engineering</option>
-              <option>Information Technology</option>
-              <option>Electronics and Communication</option>
-              <option>Electrical Engineering</option>
-              <option>Mechanical Engineering</option>
-              <option>Civil Engineering</option>
-              <option>Instrumentaion and Control</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Communication">Electronics and Communication</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentaion and Control">Instrumentaion and Control</option>
             </select>
           </div>
           <div class="form-group">

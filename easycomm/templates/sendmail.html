@@ -1,0 +1,59 @@
+<html> 
+  <head>
+        <title>Send email</title>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </head>     
+  <body>
+    
+  <form class="form-horizontal" method="post" action="">
+  {% csrf_token %}
+      <fieldset>
+
+      <!-- Form Name -->
+      <legend>Send Email to Notify Others</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="reciever">To:</label>  
+        <div class="col-md-4">
+        <input id="reciever" name="reciever" type="text" placeholder="Email Address Of Reciever" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="subject">Subject</label>  
+        <div class="col-md-4">
+        <input id="subject" name="subject" type="text" placeholder="subject" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="message">Message</label>
+        <div class="col-md-4">                     
+          <textarea class="form-control" id="message" name="message">write your message here</textarea>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="submit"></label>
+        <div class="col-md-4">
+          <button id="submit" name="submit" class="btn btn-primary">Send Mail</button>
+        </div>
+      </div>
+
+      </fieldset>
+      </form>
+  </body>
+</html>

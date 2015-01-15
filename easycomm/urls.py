@@ -17,6 +17,7 @@ urlpatterns = patterns('',
 	url(r'login', 'easycomm.views.login', name='login'),
 	url(r'register', 'easycomm.views.signup', name='signup'),
 	url(r'profile', 'easycomm.views.profile', name='profile'),
+	url(r'sendmail', 'easycomm.views.sendmail', name='sendmail'),
 	url(r'logout', 'django.contrib.auth.views.logout',{'next_page': '/login'}),
 	# Examples:
 	# url(r'^$', 'easycomm.views.home', name='home'),

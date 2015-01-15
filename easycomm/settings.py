@@ -57,7 +57,10 @@ WSGI_APPLICATION = 'easycomm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'db.mysql'),
+        # 'NAME': os.path.join(BASE_DIR, 'easycomm.db'),
+        'NAME':'easycomm',
+        'USER':'root',
+        'PASSWORD':'helloworld',
     }
 }
 
@@ -78,7 +81,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT= "/home/deshraj/Documents/easycomm/static/"
+STATIC_ROOT= "/home/deshraj/Documents/easycomm/staticfiles/"
 STATIC_URL = '/static/'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -100,3 +103,13 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+AUTH_PROFILE_MODULE = "easycomm.UserProfile"
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'deshrajdry@gmail.com'
+# EMAIL_HOST_PASSWORD = 'LOL'
+# EMAIL_HOST_PASSWORD = 'youAretryingToBeClever'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

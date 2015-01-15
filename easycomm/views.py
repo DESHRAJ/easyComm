@@ -15,8 +15,10 @@ from django.template.loader import render_to_string, get_template
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
+from django.contrib.auth.decorators import login_required
 # from datetime import datetime,timedelta
 import random,string
+from easycomm.models import *
 # import settings
 # import datetime
 # from pyUrl.models import * 
@@ -33,10 +35,15 @@ def signup(request):
 			print "entered the if sectison"
 			username = request.POST['username']
 			email = request.POST['email']
+			deptt = request.POST['deptt']
+			fname = request.POST['fname']
+			lname = request.POST['lname']
 			password = request.POST['password']
+			print email,password, deptt, fname, lname
 			try:
-				user = User.objects.create_user(username=username,email=email,password=password)
+				user = User.objects.create_user(username=username,email=email,password=password, first_name=fname,last_name =lname,)
 				user.save()
+				# UserProfile.objects(deptt= deptt).save()
 				return HttpResponseRedirect("/profile")
 			except:
 				return HttpResponse("This Id already exists")
@@ -90,3 +97,17 @@ def profile(request):
 # def stupro(request,username=None):
 # 	#write the queries for getting the details of the user
 # 	return render_to_response("display.html")
+@login_required
+def sendmail(request):
+	if request.POST:
+		to = request.POST['reciever']
+		subject = request.POST['subject']
+		message = request.POST['message']
+		sender = request.user.username
+		send_mail(subject, message, str(sender)+"<emails@jssaten.ac.in>", to.split(' '), fail_silently=False)
+		# print request.user.email
+		print "SENT MAIL TO", to
+		print "SUBJECT:", subject
+		print "Message:",message
+		return render_to_response("success.html",{'to':to},context_instance=RequestContext(request))
+	return render_to_response("sendmail.html",context_instance=RequestContext(request))	

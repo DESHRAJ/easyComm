@@ -28,9 +28,19 @@
   }
 </script>
 <br><br>
-    <center><h3>Hey {{user.username}}!<br> Welcome </h3>
-    <br><br><br><br><h4>Using this dashboard, you can login and make the changes in your profile as you want ot change.<br>
-    This platform will let you to share teh link with the other industries and the internship companies wherevevr you will be applying. This is officially prvided by the JSSATEN College.</h4>
+    <center><h3>Hey {{user.first_name}} {{ user.last_name }}!<br>{{ user.email }} Welcome </h3>
+    <br><br><br><br><h3>Using this web application you cna easily send mails and messages to the other faculty members of any department and that message will be sent directly to their email accounts. From there they can reply directly.</h3>
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="send"></label>
+		  <div class="col-md-4">
+		    <button id="send" name="send" class="btn btn-success" onclick="fun();">Send Mail</button>
+		  </div>
+		</div>
+		<script type="text/javascript">function fun () {
+			// body...
+			window.location="/sendmail";
+		}</script>
+
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
