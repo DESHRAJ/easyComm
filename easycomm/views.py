@@ -9,20 +9,14 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-# import mongoengine
 from django.core.mail import send_mail
 from django.template.loader import render_to_string, get_template
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from django.contrib.auth.decorators import login_required
-# from datetime import datetime,timedelta
 import random,string
 from easycomm.models import *
-# import settings
-# import datetime
-# from pyUrl.models import * 
-# Create your views here.
 def home(request):
 	if request.user.is_authenticated():
 		return HttpResponseRedirect("/profile")
@@ -43,7 +37,6 @@ def signup(request):
 			try:
 				user = User.objects.create_user(username=username,email=email,password=password, first_name=fname,last_name =lname,)
 				user.save()
-				# UserProfile.objects(deptt= deptt).save()
 				return HttpResponseRedirect("/profile")
 			except:
 				return HttpResponse("This Id already exists")
@@ -60,12 +53,9 @@ def login(request):
 			password = request.POST['password']
 			user = auth.authenticate(username=username, password=password)
 			if user is not None and user.is_active:
-				# Correct password, and the user is marked "active"
 				auth.login(request,user)
-				# Redirect to a success page.
 				return HttpResponseRedirect("/profile")
 			else:
-				# Show an error page
 				return HttpResponse("<h3>Incorrect password</h3>")
 		return render_to_response('login.html',context_instance=RequestContext(request))
 	else:
@@ -94,9 +84,6 @@ def profile(request):
 	else:
 		return redirect('/login/?next=%s' % request.path)
 
-# def stupro(request,username=None):
-# 	#write the queries for getting the details of the user
-# 	return render_to_response("display.html")
 @login_required
 def sendmail(request):
 	if request.POST:
@@ -105,9 +92,5 @@ def sendmail(request):
 		message = request.POST['message']
 		sender = request.user.username
 		send_mail(subject, message, str(sender)+"<emails@jssaten.ac.in>", to.split(' '), fail_silently=False)
-		# print request.user.email
-		print "SENT MAIL TO", to
-		print "SUBJECT:", subject
-		print "Message:",message
 		return render_to_response("success.html",{'to':to},context_instance=RequestContext(request))
 	return render_to_response("sendmail.html",context_instance=RequestContext(request))	
