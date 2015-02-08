@@ -94,3 +94,9 @@ def sendmail(request):
 		send_mail(subject, message, str(sender)+"<emails@jssaten.ac.in>", to.split(' '), fail_silently=False)
 		return render_to_response("success.html",{'to':to},context_instance=RequestContext(request))
 	return render_to_response("sendmail.html",context_instance=RequestContext(request))	
+
+
+def dashboard(request):
+	""" This view creates a dashboard for the faculty members and fetches the required values from the backend """
+	return render(request,'dashboard.html')
+	
